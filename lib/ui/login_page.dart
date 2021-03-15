@@ -42,7 +42,7 @@ class LoginPage extends GetWidget<AuthController> {
                 child: Text("Sign In Anonymously"),
                 onPressed: () {
                   controller.signInAnonymously();
-                  Get.toNamed(Routes.homePage);
+                  Get.toNamed(Routes.home_page);
                 },
               ),
               TextButton(

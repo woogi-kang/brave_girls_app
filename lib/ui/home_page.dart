@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:brave_girls/controllers/authController.dart';
 import 'package:brave_girls/resources/resources.dart';
+import 'package:brave_girls/utils/routes.dart';
 import 'package:brave_girls/utils/ui_size.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +22,7 @@ class HomePage extends GetWidget<AuthController> {
           fit: StackFit.expand,
           children: [
             Image.asset(
-              Assets.rollinAlbumCover,
+              Assets.werideAlbumCover,
               fit: BoxFit.fitHeight,
             ),
             Container(
@@ -42,10 +43,10 @@ class HomePage extends GetWidget<AuthController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      buildImage(Assets.minyoungWeride),
-                      buildImage(Assets.youjoungWeride),
-                      buildImage(Assets.eunjiWeride),
-                      buildImage(Assets.yunaWeride),
+                      buildImage(Assets.werideMinyoung),
+                      buildImage(Assets.werideYoujoung),
+                      buildImage(Assets.werideEunji),
+                      buildImage(Assets.werideYuna),
                     ],
                   ),
                 )
@@ -156,15 +157,20 @@ class HomePage extends GetWidget<AuthController> {
   }
 
   Widget buildImage(String? assetPath) {
-    return Container(
-      width: 80.s,
-      height: 200.s,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(5.s),
-        child: Image.asset(
-          assetPath!,
-          filterQuality: FilterQuality.high,
-          fit: BoxFit.cover,
+    return InkWell(
+      onTap: () {
+        Get.toNamed(Routes.member_detail);
+      },
+      child: Container(
+        width: 80.s,
+        height: 200.s,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(5.s),
+          child: Image.asset(
+            assetPath!,
+            filterQuality: FilterQuality.high,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

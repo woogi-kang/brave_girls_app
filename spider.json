@@ -9,12 +9,6 @@
       "path": "assets/images",
       "class_name": "Assets",
       "types": ["jpg", "jpeg", "png", "webp", "gif", "bmp", "wbmp"]
-    },
-    {
-      "path": "assets/svgs",
-      "class_name": "Svgs",
-      "package": "res",
-      "types": ["svg"]
     }
   ]
 }
