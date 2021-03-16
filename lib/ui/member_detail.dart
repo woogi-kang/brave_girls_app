@@ -2,9 +2,9 @@ import 'package:brave_girls/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class MemberDetail extends StatelessWidget {
-  // final String? memberName;
-  //
-  // const MemberDetail({Key? key, this.memberName}) : super(key: key);
+  final String? memberName;
+
+  const MemberDetail({Key? key, this.memberName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class MemberDetail extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Icon(Icons.apps),
+            Center(child: Text("$memberName")),
             Icon(Icons.movie),
             Icon(Icons.games),
             Icon(Icons.games),

@@ -159,7 +159,9 @@ class HomePage extends GetWidget<AuthController> {
   Widget buildImage(String? assetPath) {
     return InkWell(
       onTap: () {
-        Get.toNamed(Routes.member_detail);
+        Get.toNamed(Routes.member_detail, arguments: {
+          "memberName" : 'minyoung'
+        });
       },
       child: Container(
         width: 80.s,
