@@ -1,4 +1,4 @@
-import 'package:brave_girls/models/user.dart';
+import 'package:brave_girls/models/user_model.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController {

@@ -1,4 +1,4 @@
-import 'package:brave_girls/models/todo.dart';
+import 'package:brave_girls/models/todo_model.dart';
 import 'package:brave_girls/services/database.dart';
 import 'package:flutter/material.dart';
 

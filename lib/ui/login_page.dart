@@ -1,4 +1,4 @@
-import 'package:brave_girls/controllers/authController.dart';
+import 'package:brave_girls/controllers/auth_controller.dart';
 import 'package:brave_girls/ui/signup_page.dart';
 import 'package:brave_girls/utils/routes.dart';
 import 'package:flutter/material.dart';

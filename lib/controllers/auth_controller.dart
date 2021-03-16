@@ -1,5 +1,5 @@
-import 'package:brave_girls/controllers/userController.dart';
-import 'package:brave_girls/models/user.dart';
+import 'package:brave_girls/controllers/user_controller.dart';
+import 'package:brave_girls/models/user_model.dart';
 import 'package:brave_girls/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';

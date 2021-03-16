@@ -1,5 +1,5 @@
 import 'package:brave_girls/ui/home_page.dart';
-import 'package:brave_girls/ui/member_detail.dart';
+import 'package:brave_girls/ui/member_detail/member_detail.dart';
 import 'package:brave_girls/ui/splash_page.dart';
 import 'package:brave_girls/utils/root.dart';
 import 'package:brave_girls/utils/routes.dart';

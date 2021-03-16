@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:brave_girls/controllers/authController.dart';
+import 'package:brave_girls/controllers/auth_controller.dart';
 import 'package:brave_girls/resources/resources.dart';
 import 'package:brave_girls/utils/routes.dart';
 import 'package:brave_girls/utils/ui_size.dart';

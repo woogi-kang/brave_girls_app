@@ -1,4 +1,4 @@
-import 'package:brave_girls/controllers/authController.dart';
+import 'package:brave_girls/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 

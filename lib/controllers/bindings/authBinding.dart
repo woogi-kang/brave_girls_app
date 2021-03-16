@@ -1,4 +1,4 @@
-import 'package:brave_girls/controllers/authController.dart';
+import 'package:brave_girls/controllers/auth_controller.dart';
 import 'package:get/get.dart';
 
 class AuthBinding extends Bindings {

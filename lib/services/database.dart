@@ -1,5 +1,5 @@
-import 'package:brave_girls/models/todo.dart';
-import 'package:brave_girls/models/user.dart';
+import 'package:brave_girls/models/todo_model.dart';
+import 'package:brave_girls/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Database {

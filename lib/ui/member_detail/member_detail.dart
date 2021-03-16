@@ -16,10 +16,16 @@ class MemberDetail extends StatelessWidget {
           backgroundColor: AppColors.darkSlateBlue,
           elevation: 0,
           bottom: TabBar(
-              labelColor: Colors.white,
+              labelColor: AppColors.slateBlue,
               unselectedLabelColor: Colors.white,
               indicatorSize: TabBarIndicatorSize.label,
-              indicator: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)), color: AppColors.pink),
+              indicator: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                ),
+                color: Colors.white,
+              ),
               tabs: [
                 Tab(
                   child: Align(

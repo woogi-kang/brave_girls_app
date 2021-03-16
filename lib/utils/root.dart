@@ -1,5 +1,5 @@
-import 'package:brave_girls/controllers/authController.dart';
-import 'package:brave_girls/controllers/userController.dart';
+import 'package:brave_girls/controllers/auth_controller.dart';
+import 'package:brave_girls/controllers/user_controller.dart';
 import 'package:brave_girls/ui/home_page.dart';
 import 'package:brave_girls/ui/login_page.dart';
 import 'package:flutter/material.dart';
