@@ -19,6 +19,7 @@ dependencies:
   fimber: ^0.6.1
   flutter_phoenix: ^1.0.0
   youtube_player_flutter: ^7.0.0+7
+  http: ^0.13.0
 
 dev_dependencies:
   flutter_test:

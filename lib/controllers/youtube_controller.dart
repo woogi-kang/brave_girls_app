@@ -9,6 +9,10 @@ class YoutubeController extends GetxController {
 
   set youtubeModel(YoutubeModel value) => _youtubeModel.value = value;
 
+  void getYoutubeLists(String query) async {
+
+  }
+
   void clear() {
     _youtubeModel.value = YoutubeModel();
   }
