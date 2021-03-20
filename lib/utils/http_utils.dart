@@ -5,10 +5,10 @@ import 'package:fimber/fimber.dart';
 import 'package:http/http.dart' as http;
 
 class HttpUtil {
-  Future<http.Response> get(String url) async {
+  Future<String> get({String? url, String? unEncodedPath, Map<String,dynamic>? params}) async {
     var responseData;
 
-    var uri = Uri.https(url, '');
+    var uri = Uri.https(url!, unEncodedPath!, params);
 
     try {
       final response = await http.get(
@@ -19,7 +19,7 @@ class HttpUtil {
       int status = response.statusCode;
 
       if(status == 200) {
-        responseData = response;
+        responseData = utf8.decode(response.bodyBytes);
       }
     } on TimeoutException catch (e) {
       print('TimeoutException: ${e.toString()}');

@@ -29,7 +29,9 @@ class BraveGirlsApp extends StatelessWidget {
       getPages: AppPages.pages,
       initialBinding: AuthBinding(),
       home: SplashPage(),
-      theme: ThemeData(),
+      theme: ThemeData(
+        fontFamily: 'NotoSansKR Regular'
+      ),
     );
   }
 }
