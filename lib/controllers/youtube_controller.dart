@@ -9,7 +9,11 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class YoutubeController extends GetxController {
+  final String? query;
+  YoutubeController({this.query});
+
   YoutubeListModel _youtubeModel = YoutubeListModel();
+
   YoutubeListModel get getModel => _youtubeModel;
   set youtubeModel(YoutubeListModel value) => _youtubeModel = value;
 
@@ -18,7 +22,7 @@ class YoutubeController extends GetxController {
 
   @override
   void onInit() async {  // called immediately after the widget is allocated memory
-    await fetchApi(query: '브레이브걸스', maxResults: 20);
+    await fetchApi(query: query, maxResults: 20);
     super.onInit();
   }
 

@@ -5,10 +5,14 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailYoutube extends StatelessWidget {
+  final String? query;
+
+  DetailYoutube({Key? key, this.query}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<YoutubeController>(
-        init: YoutubeController(),
+        init: YoutubeController(query: query),
         builder: (controller) => !controller.isModelReady
             ? Center(
                 child: CircularProgressIndicator(),

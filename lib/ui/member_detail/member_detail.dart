@@ -1,8 +1,7 @@
 import 'package:brave_girls/constants/colors.dart';
-import 'package:brave_girls/controllers/youtube_controller.dart';
+import 'package:brave_girls/ui/member_detail/detail_gallery.dart';
 import 'package:brave_girls/ui/member_detail/detail_youtube.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MemberDetail extends StatelessWidget {
   final String? memberName;
@@ -59,8 +58,8 @@ class MemberDetail extends StatelessWidget {
         body: TabBarView(
           children: [
             Center(child: Text("$memberName")),
-            Icon(Icons.movie),
-            DetailYoutube(),
+            DetailGallery(query: memberName),
+            DetailYoutube(query: memberName),
             Icon(Icons.games),
           ],
         ),
