@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 class DetailGallery extends StatelessWidget {
   final String? query;
+
   DetailGallery({Key? key, this.query}) : super(key: key);
 
   @override
@@ -12,24 +13,28 @@ class DetailGallery extends StatelessWidget {
     return GetBuilder<GalleryController>(
       init: GalleryController(query: query),
       builder: (controller) {
-        return !controller.isModelReady ? SizedBox() : GridView.builder(
-          itemCount: controller.imagesPath!.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              width: 80,
-              height: 80,
-              margin: EdgeInsets.all(5),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: CachedNetworkImage(
-                  imageUrl: controller.imagesPath![index],
-                  fit: BoxFit.cover,
-                ),
-              ),
-            );
-          },
-        );
+        return !controller.isModelReady
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : GridView.builder(
+                itemCount: controller.imagesPath!.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    width: 80,
+                    height: 80,
+                    margin: EdgeInsets.all(5),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: CachedNetworkImage(
+                        imageUrl: controller.imagesPath![index],
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                },
+              );
       },
     );
   }

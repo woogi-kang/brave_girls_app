@@ -1,20 +1,26 @@
 import 'package:brave_girls/constants/colors.dart';
+import 'package:brave_girls/models/profile_model.dart';
 import 'package:brave_girls/ui/member_detail/detail_gallery.dart';
+import 'package:brave_girls/ui/member_detail/detail_profile.dart';
 import 'package:brave_girls/ui/member_detail/detail_youtube.dart';
 import 'package:flutter/material.dart';
 
 class MemberDetail extends StatelessWidget {
-  final String? memberName;
+  final ProfileModel? memberProfile;
 
-  const MemberDetail({Key? key, this.memberName}) : super(key: key);
+  const MemberDetail({Key? key, this.memberProfile}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var query = memberProfile!.memberName!.split(' ')[1];
+
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          title: Text(memberProfile!.memberName!),
+          centerTitle: false,
           backgroundColor: AppColors.darkSlateBlue,
           elevation: 0,
           bottom: TabBar(
@@ -57,9 +63,9 @@ class MemberDetail extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Center(child: Text("$memberName")),
-            DetailGallery(query: memberName),
-            DetailYoutube(query: memberName),
+            DetailProfile(profileModel: memberProfile,),
+            DetailGallery(query: query),
+            DetailYoutube(query: query),
             Icon(Icons.games),
           ],
         ),

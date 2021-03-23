@@ -24,7 +24,7 @@ abstract class AppPages {
       name: Routes.member_detail,
       settings: Get.arguments,
       page: () => MemberDetail(
-        memberName: Get.arguments['memberName'],
+        memberProfile: Get.arguments['memberProfile'],
       ),
     ),
   ];

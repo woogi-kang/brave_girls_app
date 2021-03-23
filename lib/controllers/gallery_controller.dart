@@ -16,7 +16,7 @@ class GalleryController extends GetxController {
     update();
 
     final webScrapper = WebScraper('https://www.google.com');
-    if(await webScrapper.loadWebPage('/search?q=브레이브걸스&rlz=1C5CHFA_enKR942KR942&sxsrf=ALeKk02s7hC_gUksKF-q3y6EKCmrnv8Jww:1616464842429&source=lnms&tbm=isch&sa=X&ved=2ahUKEwituOXlqMXvAhUCMN4KHYyRC0EQ_AUoAXoECAEQAw&biw=1920&bih=976')) {
+    if(await webScrapper.loadWebPage('/search?q=$query&rlz=1C5CHFA_enKR942KR942&sxsrf=ALeKk02s7hC_gUksKF-q3y6EKCmrnv8Jww:1616464842429&source=lnms&tbm=isch&sa=X&ved=2ahUKEwituOXlqMXvAhUCMN4KHYyRC0EQ_AUoAXoECAEQAw&biw=1920&bih=976')) {
       List<Map<String, dynamic>> images = webScrapper.getElement('img"', ['src']);
 
       if(images.isNotEmpty) {
