@@ -6,7 +6,8 @@ List<ProfileModel> memberProfiles = [
     memberName: '브레이브걸스 민영',
     image: Assets.werideMinyoung,
     profile: Profile(
-      name: '김민영 (金玟瑩)',
+      name_ko: '김민영',
+      name_en: 'Min Young Kim',
       birth: '1990년 9월 12일 (30세)',
       ancestry: '경기도 성남시',
       country: '대한민국',
@@ -18,7 +19,7 @@ List<ProfileModel> memberProfiles = [
       group: 'Brave Girls',
       position: '메인보컬, 메인댄서',
       mbti: 'INTP',
-      nicknames: ['메보좌', '트로피칼칼 언니', '미뇽', '망나뇽', '뇽뇽', '역삼동 황금발', '홍민영/흥민영'],
+      nicknames: ['메보좌', '트로피칼칼언니', '미뇽', '망나뇽', '뇽뇽', '역삼동 황금발', '홍민영/흥민영'],
       ability: ['무용', '풋살'],
       link: Link(
         twitter: 'https://twitter.com/nyong2ya',
@@ -32,7 +33,8 @@ List<ProfileModel> memberProfiles = [
     memberName: '브레이브걸스 유정',
     image: Assets.werideYoujoung,
     profile: Profile(
-      name: '남유정 (南侑廷)',
+      name_ko: '남유정',
+      name_en: 'Yu Jeong Nam',
       birth: '1991년 5월 2일 (29세)',
       ancestry: '서울특별시',
       country: '대한민국',
@@ -58,7 +60,8 @@ List<ProfileModel> memberProfiles = [
     memberName: '브레이브걸스 은지',
     image: Assets.werideEunji,
     profile: Profile(
-      name: '홍은지 (洪恩智)',
+      name_ko: '홍은지',
+      name_en: 'Eun Ji Hong',
       birth: '1992년 7월 19일 (28세)',
       ancestry: '서울특별시 송파구 잠실본동',
       country: '대한민국',
@@ -84,7 +87,8 @@ List<ProfileModel> memberProfiles = [
     memberName: '브레이브걸스 유나',
     image: Assets.werideYuna,
     profile: Profile(
-      name: '이유나 (李裕那, Yoona Lee)',
+      name_ko: '이유나',
+      name_en: 'Yuna Lee',
       birth: '1993년 4월 6일 (27세)',
       ancestry: '경기도 부천시',
       country: '대한민국',

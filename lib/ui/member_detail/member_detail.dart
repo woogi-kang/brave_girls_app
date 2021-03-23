@@ -12,7 +12,7 @@ class MemberDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var query = memberProfile!.memberName!.split(' ')[1];
+    var query = memberProfile!.memberName!;
 
     return DefaultTabController(
       length: 4,
@@ -62,8 +62,9 @@ class MemberDetail extends StatelessWidget {
               ]),
         ),
         body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           children: [
-            DetailProfile(profileModel: memberProfile,),
+            DetailProfile(profileModel: memberProfile),
             DetailGallery(query: query),
             DetailYoutube(query: query),
             Icon(Icons.games),

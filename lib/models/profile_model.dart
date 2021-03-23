@@ -24,7 +24,8 @@ class ProfileModel {
 }
 
 class Profile {
-  String? name;
+  String? name_ko;
+  String? name_en;
   String? birth;
   String? ancestry;
   String? country;
@@ -41,7 +42,8 @@ class Profile {
   Link? link;
 
   Profile(
-      {this.name,
+      {this.name_ko,
+        this.name_en,
         this.birth,
         this.ancestry,
         this.country,
@@ -58,7 +60,8 @@ class Profile {
         this.link});
 
   Profile.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
+    name_ko = json['name_ko'];
+    name_en = json['name_en'];
     birth = json['birth'];
     ancestry = json['ancestry'];
     country = json['country'];
@@ -77,7 +80,8 @@ class Profile {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
+    data['name_ko'] = this.name_ko;
+    data['name_en'] = this.name_en;
     data['birth'] = this.birth;
     data['ancestry'] = this.ancestry;
     data['country'] = this.country;
