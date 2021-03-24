@@ -120,67 +120,8 @@ class DetailProfile extends StatelessWidget {
                                     fontSize: 15,
                                   ),
                                 ),
-                                SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width: 25,
-                                      height: 25,
-                                      child: InkWell(
-                                        onTap: () async {
-                                          var url = profileModel!.profile!.link!.instagram;
-                                          await launch(url!);
-                                        },
-                                        child: Image.asset(
-                                          Assets.iconInstagram,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(width: 5),
-                                    Container(
-                                      width: 25,
-                                      height: 25,
-                                      child: InkWell(
-                                        onTap: () async {
-                                          var url = profileModel!.profile!.link!.tiktok;
-                                          await launch(url!);
-                                        },
-                                        child: Image.asset(
-                                          Assets.iconTiktok,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(width: 5),
-                                    Container(
-                                      width: 25,
-                                      height: 25,
-                                      child: InkWell(
-                                        onTap: () async {
-                                          var url = profileModel!.profile!.link!.twitter;
-                                          await launch(url!);
-                                        },
-                                        child: Image.asset(
-                                          Assets.iconTwitter,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(width: 5),
-                                    Container(
-                                      width: 25,
-                                      height: 25,
-                                      child: InkWell(
-                                        onTap: () async {
-                                          var url = profileModel!.profile!.link!.youtube;
-                                          await launch(url!);
-                                        },
-                                        child: Image.asset(
-                                          Assets.iconYoutube,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                SizedBox(height: 15),
+                                buildSnsButtons(),
                               ],
                             ),
                           ),
@@ -194,9 +135,36 @@ class DetailProfile extends StatelessWidget {
             SizedBox(height: 15),
             _buildTitleTile("데뷔"),
             _buildTileContent(profileModel!.profile!.debut!),
+            SizedBox(height: 10),
+            Container(
+              child: Image.asset(
+                Assets.byunhaeteoAlbumCover,
+                fit: BoxFit.cover,
+              ),
+            ),
             SizedBox(height: 20),
             _buildTitleTile("소속사"),
-            _buildTileContent(profileModel!.profile!.agency!),
+            SizedBox(height: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 50,
+                  child: Image.asset(
+                    Assets.braveEnterLogo,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Container(
+                  height: 70,
+                  child: Image.asset(
+                    Assets.braveGirlsLogo,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
             SizedBox(height: 20),
             _buildTitleTile("특기"),
             _buildTileListContent(profileModel!.profile!.ability),
@@ -207,6 +175,83 @@ class DetailProfile extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildSnsButtons() {
+    var link = profileModel!.profile!.link!;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Opacity(
+          opacity: link.instagram! != "" ? 1 : 0.3,
+          child: Container(
+            width: 25,
+            height: 25,
+            child: InkWell(
+              onTap: () async {
+                var url = link.instagram;
+                await launch(url!);
+              },
+              child: Image.asset(
+                Assets.iconInstagram,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 5),
+        Opacity(
+          opacity: link.youtube! != "" ? 1 : 0.3,
+          child: Container(
+            width: 25,
+            height: 25,
+            child: InkWell(
+              onTap: () async {
+                var url = link.youtube;
+                await launch(url!);
+              },
+              child: Image.asset(
+                Assets.iconYoutube,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 5),
+        Opacity(
+          opacity: link.tiktok! != "" ? 1 : 0.3,
+          child: Container(
+            width: 25,
+            height: 25,
+            child: InkWell(
+              onTap: () async {
+                var url = link.tiktok;
+                await launch(url!);
+              },
+              child: Image.asset(
+                Assets.iconTiktok,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 5),
+        Opacity(
+          opacity: link.twitter! != "" ? 1 : 0.3,
+          child: Container(
+            width: 25,
+            height: 25,
+            child: InkWell(
+              onTap: () async {
+                var url = link.twitter;
+                await launch(url!);
+              },
+              child: Image.asset(
+                Assets.iconTwitter,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

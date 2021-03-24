@@ -1,6 +1,7 @@
 import 'dart:ui';
 
-import 'package:brave_girls/constants/profiles.dart';
+import 'package:brave_girls/constants/colors.dart';
+import 'package:brave_girls/constants/constants.dart';
 import 'package:brave_girls/controllers/auth_controller.dart';
 import 'package:brave_girls/models/profile_model.dart';
 import 'package:brave_girls/resources/resources.dart';
@@ -54,18 +55,25 @@ class HomePage extends GetWidget<AuthController> {
                 )
               ],
             ),
+            Positioned(
+              top: 50,
+              right: 10,
+              child: buildMenu(),
+            ),
           ],
         ),
       ),
     );
   }
 
+  _onSelected(String? item) {
+    Get.toNamed(Routes.chart);
+  }
+
   Widget buildImage(ProfileModel? memberProfile) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.member_detail, arguments: {
-          "memberProfile" : memberProfile!
-        });
+        Get.toNamed(Routes.member_detail, arguments: {"memberProfile": memberProfile!});
       },
       child: Container(
         width: 80.s,
@@ -79,6 +87,29 @@ class HomePage extends GetWidget<AuthController> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildMenu() {
+    return PopupMenuButton<String>(
+      shape: RoundedRectangleBorder(
+        side: BorderSide(width: 1, color: Color.fromARGB(255, 221, 221, 221)),
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      ),
+      itemBuilder: (context) => menus.map((item) => PopupMenuItem<String>(value: item, child: Text(item))).toList(),
+      child: Icon(
+        Icons.menu,
+        color: AppColors.darkNavy,
+        size: 40,
+      ),
+      onSelected: (value) {
+        if (value == "음원 순위") {
+          Get.toNamed(Routes.chart);
+        } else if (value == "앨범 정보") {}
+      },
+      onCanceled: () {
+        return;
+      },
     );
   }
 }
