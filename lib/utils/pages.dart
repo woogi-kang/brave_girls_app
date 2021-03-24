@@ -1,5 +1,7 @@
+import 'package:brave_girls/ui/chart_ranking_page.dart';
 import 'package:brave_girls/ui/home_page.dart';
 import 'package:brave_girls/ui/member_detail/member_detail.dart';
+import 'package:brave_girls/ui/photo_view_page.dart';
 import 'package:brave_girls/ui/splash_page.dart';
 import 'package:brave_girls/utils/root.dart';
 import 'package:brave_girls/utils/routes.dart';
@@ -26,6 +28,18 @@ abstract class AppPages {
       page: () => MemberDetail(
         memberProfile: Get.arguments['memberProfile'],
       ),
+    ),
+    GetPage(
+      name: Routes.photo_view,
+      settings: Get.arguments,
+      page: () => PhotoViewPage(
+        imageUrls: Get.arguments['imageUrls'],
+        index: Get.arguments['index'],
+      ),
+    ),
+    GetPage(
+      name: Routes.chart,
+      page: () => ChartRankingPage(),
     ),
   ];
 }
