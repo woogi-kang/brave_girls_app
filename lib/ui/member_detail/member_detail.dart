@@ -56,7 +56,7 @@ class MemberDetail extends StatelessWidget {
                 Tab(
                   child: Align(
                     alignment: Alignment.center,
-                    child: Text("응애응"),
+                    child: Text("기타"),
                   ),
                 ),
               ]),
