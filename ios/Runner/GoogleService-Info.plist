@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>432308594154-qt3ago5jflbc9rch0ak1rsag8lv3p62n.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.432308594154-qt3ago5jflbc9rch0ak1rsag8lv3p62n</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAA6s_6EaPaqB3DYJ1_XWHH1RRldJQzQWg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>432308594154</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.braveGirls</string>
+	<key>PROJECT_ID</key>
+	<string>brave-girls-56b0a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>brave-girls-56b0a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:432308594154:ios:f94cdf7e670fd988ab7e93</string>
+</dict>
+</plist>
