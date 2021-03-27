@@ -27,31 +27,40 @@ class ChartRankingPage extends StatelessWidget {
               ? Center(
                   child: CircularProgressIndicator(),
                 )
-              : GestureDetector(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _buildTitleTile("멜론 일일 차트"),
-                      const SizedBox(height: 20),
-                      Container(
-                        child: Text(
-                          "Rollin' ${controller.melonChart[0]['rank']}위",
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      _buildTitleTile("멜론 주간 차트"),
-                      const SizedBox(height: 20),
-                      Container(
-                        child: Text(
-                          "Rollin' ${controller.melonChart[1]['rank']}위",
-                        ),
-                      ),
-                    ],
+              : SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildTitleTile('${DateTime.now().toString().substring(0,10)} 기준'),
+                        const SizedBox(height: 20),
+                        _buildTitleTile("멜론 일일 차트"),
+                        const SizedBox(height: 10),
+                        Column(
+                            children: controller.melonChart
+                                .map((e) => (e['type'] == 'day')
+                                    ? Container(
+                                        child: Text('${e['title']} ${e['rank']}위'),
+                                      )
+                                    : SizedBox())
+                                .toList()),
+                        const SizedBox(height: 10),
+                        _buildTitleTile("멜론 주간 차트"),
+                        const SizedBox(height: 10),
+                        Column(
+                            children: controller.melonChart
+                                .map((e) => (e['type'] == 'week')
+                                    ? Container(
+                                        child: Text('${e['title']} ${e['rank']}위'),
+                                      )
+                                    : SizedBox())
+                                .toList()),
+                        const SizedBox(height: 10),
+                      ],
+                    ),
                   ),
-                ),
-              );
+                );
         },
       ),
     );
