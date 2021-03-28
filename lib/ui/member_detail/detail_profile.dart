@@ -20,7 +20,6 @@ class DetailProfile extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    height: 300,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -30,6 +29,7 @@ class DetailProfile extends StatelessWidget {
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
                                 profileModel!.image!,
+                                height: 300,
                                 fit: BoxFit.cover,
                               ),
                             ),

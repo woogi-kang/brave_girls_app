@@ -2,6 +2,7 @@ import 'package:brave_girls/constants/colors.dart';
 import 'package:brave_girls/models/profile_model.dart';
 import 'package:brave_girls/ui/member_detail/detail_gallery.dart';
 import 'package:brave_girls/ui/member_detail/detail_profile.dart';
+import 'package:brave_girls/ui/member_detail/detail_wiki.dart';
 import 'package:brave_girls/ui/member_detail/detail_youtube.dart';
 import 'package:flutter/material.dart';
 
@@ -67,7 +68,7 @@ class MemberDetail extends StatelessWidget {
             DetailProfile(profileModel: memberProfile),
             DetailGallery(query: query),
             DetailYoutube(query: query),
-            Icon(Icons.games),
+            DetailWiki(),
           ],
         ),
       ),
