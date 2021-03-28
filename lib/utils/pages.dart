@@ -1,3 +1,4 @@
+import 'package:brave_girls/ui/albums/albums_page.dart';
 import 'package:brave_girls/ui/chart_ranking_page.dart';
 import 'package:brave_girls/ui/home_page.dart';
 import 'package:brave_girls/ui/member_detail/member_detail.dart';
@@ -40,6 +41,10 @@ abstract class AppPages {
     GetPage(
       name: Routes.chart,
       page: () => ChartRankingPage(),
+    ),
+    GetPage(
+      name: Routes.album_detail,
+      page: () => AlbumsPage(),
     ),
   ];
 }

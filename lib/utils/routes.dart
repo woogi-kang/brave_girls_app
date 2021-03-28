@@ -5,4 +5,5 @@ abstract class Routes {
   static const member_detail = '/member_detail';
   static const photo_view = '/photo_view';
   static const chart = '/chart';
+  static const album_detail = '/album_detail';
 }

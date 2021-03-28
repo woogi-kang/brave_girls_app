@@ -105,7 +105,9 @@ class HomePage extends GetWidget<AuthController> {
       onSelected: (value) {
         if (value == "음원 순위") {
           Get.toNamed(Routes.chart);
-        } else if (value == "앨범 정보") {}
+        } else if (value == "앨범 정보") {
+          Get.toNamed(Routes.album_detail);
+        }
       },
       onCanceled: () {
         return;
