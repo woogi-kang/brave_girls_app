@@ -23,6 +23,8 @@ class DetailYoutube extends StatelessWidget {
                 var item = controller.getModel.items![index];
                 var id = item.id;
                 var thumbnail = item.snippet!.thumbnails;
+                var title = item.snippet!.title!;
+                title = title.replaceAll('&#39;', '');
 
                 return InkWell(
                   onTap: () async {
@@ -30,31 +32,44 @@ class DetailYoutube extends StatelessWidget {
                     await launch(url);
                   },
                   child: Container(
-                    height: thumbnail!.high!.height!.toDouble(),
-                    margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                     child: Column(
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: CachedNetworkImage(
-                            imageUrl: (thumbnail.high!.url!),
-                            fit: BoxFit.cover,
-                          ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: CachedNetworkImage(
+                                  height: thumbnail!.medium!.height!.toDouble(),
+                                  imageUrl: (thumbnail.high!.url!),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
+                        const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Expanded(
-                              child: Text(
-                                item.snippet!.title!,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 15, letterSpacing: 0.5),
+                              child: Container(
+                                padding: const EdgeInsets.fromLTRB(16, 5, 16, 0),
+                                child: Text(
+                                  title,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontFamily: 'NotoSansKR Regular',
+                                    fontSize: 15,
+                                    letterSpacing: 0.5,
+                                  ),
+                                ),
                               ),
                             ),
                           ],
-                        )
+                        ),
+                        const SizedBox(height: 20),
+                        Divider(),
                       ],
                     ),
                   ),

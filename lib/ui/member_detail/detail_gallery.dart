@@ -12,7 +12,7 @@ class DetailGallery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GalleryController>(
-      init: GalleryController(query: query),
+      init: GalleryController(query: query!+" 셀카"),
       builder: (controller) {
         return !controller.isModelReady
             ? Center(
@@ -39,7 +39,7 @@ class DetailGallery extends StatelessWidget {
         height: 80,
         margin: EdgeInsets.all(5),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(4),
           child: CachedNetworkImage(
             imageUrl: controller.imagesPath![index],
             fit: BoxFit.cover,

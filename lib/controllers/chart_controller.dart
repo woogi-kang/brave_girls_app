@@ -116,6 +116,9 @@ class ChartController extends GetxController {
         }
       }
     }
+
+    _isModelReady = true;
+    update();
   }
 
   Future<void> getGenieChart({String? title, bool? last}) async {

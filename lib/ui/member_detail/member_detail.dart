@@ -25,42 +25,43 @@ class MemberDetail extends StatelessWidget {
           backgroundColor: AppColors.darkSlateBlue,
           elevation: 0,
           bottom: TabBar(
-              labelColor: AppColors.slateBlue,
-              unselectedLabelColor: Colors.white,
-              indicatorSize: TabBarIndicatorSize.label,
-              indicator: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                ),
-                color: Colors.white,
+            labelColor: AppColors.slateBlue,
+            unselectedLabelColor: Colors.white,
+            indicatorSize: TabBarIndicatorSize.tab,
+            indicator: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
               ),
-              tabs: [
-                Tab(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text("정보"),
-                  ),
+              color: Colors.white,
+            ),
+            tabs: [
+              Tab(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text("정보"),
                 ),
-                Tab(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text("갤러리"),
-                  ),
+              ),
+              Tab(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text("갤러리"),
                 ),
-                Tab(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text("관련영상"),
-                  ),
+              ),
+              Tab(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text("관련영상"),
                 ),
-                Tab(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text("기타"),
-                  ),
+              ),
+              Tab(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text("기타"),
                 ),
-              ]),
+              ),
+            ],
+          ),
         ),
         body: TabBarView(
           physics: NeverScrollableScrollPhysics(),
