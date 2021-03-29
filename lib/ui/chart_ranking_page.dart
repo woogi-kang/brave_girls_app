@@ -50,6 +50,22 @@ class ChartRankingPage extends StatelessWidget {
                         _buildTitleTile("지니 주간 차트"),
                         const SizedBox(height: 10),
                         _buildGenieChartRanking(controller: controller, isDay: false),
+                        const SizedBox(height: 30),
+                        _buildTitleTile("벅스 일간 차트"),
+                        const SizedBox(height: 10),
+                        _buildBugsChartRanking(controller: controller, isDay: true),
+                        const SizedBox(height: 10),
+                        _buildTitleTile("벅스 주간 차트"),
+                        const SizedBox(height: 10),
+                        _buildBugsChartRanking(controller: controller, isDay: false),
+                        const SizedBox(height: 30),
+                        _buildTitleTile("Spotify 일간 차트 한국"),
+                        const SizedBox(height: 10),
+                        _buildSpotifyChartRanking(controller: controller, isDay: true),
+                        const SizedBox(height: 10),
+                        _buildTitleTile("Spotify 주간 차트 한국"),
+                        const SizedBox(height: 10),
+                        _buildSpotifyChartRanking(controller: controller, isDay: false),
                         const SizedBox(height: 10),
                       ],
                     ),
@@ -109,6 +125,54 @@ class ChartRankingPage extends StatelessWidget {
             .toList());
   }
 
+  Widget _buildBugsChartRanking({ChartController? controller, bool? isDay}) {
+    var day = 'day';
+
+    if (isDay == false) {
+      day = 'week';
+    }
+
+    return Column(
+        children: controller!.bugsChart
+            .map((e) => (e['type'] == day)
+            ? Container(
+          child: Text(
+            '${e['title']} ${e['rank']}위',
+            style: TextStyle(
+              fontFamily: 'NotoSansKR Regular',
+              color: Colors.black,
+              fontSize: 14,
+            ),
+          ),
+        )
+            : SizedBox())
+            .toList());
+  }
+
+  Widget _buildSpotifyChartRanking({ChartController? controller, bool? isDay}) {
+    var day = 'day';
+
+    if (isDay == false) {
+      day = 'week';
+    }
+
+    return Column(
+        children: controller!.spotifyChart
+            .map((e) => (e['type'] == day)
+            ? Container(
+          child: Text(
+            '${e['title']} ${e['rank']}위',
+            style: TextStyle(
+              fontFamily: 'NotoSansKR Regular',
+              color: Colors.black,
+              fontSize: 14,
+            ),
+          ),
+        )
+            : SizedBox())
+            .toList());
+  }
+
   Widget _buildDateTitle() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -123,7 +187,7 @@ class ChartRankingPage extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                '${DateTime.now().toString().substring(0, 10)} 기준',
+                'Top 100위 ${DateTime.now().toString().substring(0, 10)} 기준',
                 style: TextStyle(
                   fontFamily: 'NotoSansKR Bold',
                   color: Colors.white,

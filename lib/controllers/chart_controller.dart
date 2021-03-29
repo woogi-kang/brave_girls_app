@@ -3,10 +3,9 @@ import 'package:web_scraper/web_scraper.dart';
 
 class ChartController extends GetxController {
   List<Map<String, dynamic>> melonChart = [];
-  List<Map<String, dynamic>> spotifyChart = [];
   List<Map<String, dynamic>> bugsChart = [];
   List<Map<String, dynamic>> genieChart = [];
-  List<Map<String, dynamic>> vibeChart = [];
+  List<Map<String, dynamic>> spotifyChart = [];
 
   bool _isModelReady = false;
 
@@ -14,13 +13,15 @@ class ChartController extends GetxController {
 
   @override
   void onInit() {
-    getMelonChart(titles: ["Rollin'", '운전만해']);
-    getGenieChart(titles: ["Rollin'", '운전만해']);
     super.onInit();
   }
 
   @override
-  void onReady() {
+  void onReady() async {
+    await getMelonChart(titles: ["Rollin'", '운전만해']);
+    await getGenieChart(titles: ["Rollin'", '운전만해']);
+    await getBugsChart(titles: ["Rollin'", '운전만해']);
+    await getSpotifyChart(titles: ["Rollin'", 'We Ride']);
     super.onReady();
   }
 
@@ -29,7 +30,7 @@ class ChartController extends GetxController {
     super.onClose();
   }
 
-  void getMelonChart({required List<String?> titles}) async {
+  Future<void> getMelonChart({required List<String> titles}) async {
     _isModelReady = false;
     update();
 
@@ -46,7 +47,7 @@ class ChartController extends GetxController {
           var itemTitle = item['title'].toString().trim();
 
           titles.forEach((element) {
-            if (itemTitle.contains(element!)) {
+            if (itemTitle.contains(element)) {
               melonChart.add({
                 'title': element,
                 'rank': rankNo,
@@ -63,7 +64,7 @@ class ChartController extends GetxController {
             var itemTitle = item['title'].toString().trim();
 
             titles.forEach((element) {
-              if (itemTitle.contains(element!)) {
+              if (itemTitle.contains(element)) {
                 melonChart.add({
                   'title': element,
                   'rank': rankNo,
@@ -89,7 +90,7 @@ class ChartController extends GetxController {
           var itemTitle = item['title'].toString().trim();
 
           titles.forEach((element) {
-            if (itemTitle.contains(element!)) {
+            if (itemTitle.contains(element)) {
               melonChart.add({
                 'title': element,
                 'rank': rankNo,
@@ -104,7 +105,7 @@ class ChartController extends GetxController {
           var itemTitle = item['title'].toString().trim();
 
           titles.forEach((element) {
-            if (itemTitle.contains(element!)) {
+            if (itemTitle.contains(element)) {
               melonChart.add({
                 'title': element,
                 'rank': rankNo,
@@ -118,7 +119,7 @@ class ChartController extends GetxController {
     }
   }
 
-  Future<void> getGenieChart({required List<String?> titles}) async {
+  Future<void> getGenieChart({required List<String> titles}) async {
     var webScrapper = WebScraper('https://www.genie.co.kr');
 
     int pageNo = 1;
@@ -134,7 +135,7 @@ class ChartController extends GetxController {
             var itemTitle = item['title'].toString().trim();
 
             titles.forEach((element) {
-              if (itemTitle.contains(element!)) {
+              if (itemTitle.contains(element)) {
                 genieChart.add({
                   'title': element,
                   'rank': rankNo,
@@ -162,7 +163,7 @@ class ChartController extends GetxController {
             var itemTitle = item['title'].toString().trim();
 
             titles.forEach((element) {
-              if (itemTitle.contains(element!)) {
+              if (itemTitle.contains(element)) {
                 genieChart.add({
                   'title': element,
                   'rank': rankNo,
@@ -175,6 +176,112 @@ class ChartController extends GetxController {
         }
       }
       ++pageNo;
+    }
+  }
+
+  Future<void> getBugsChart({required List<String> titles}) async {
+    var webScrapper = WebScraper('https://music.bugs.co.kr/');
+
+    int rankNo = 1;
+
+    // 일간 차트
+    if(await webScrapper.loadWebPage("/chart/track/day/total")) {
+      List<Map<String, dynamic>> items = webScrapper.getElement('tr"', ['']);
+
+      if(items.isNotEmpty) {
+        for (var item in items) {
+          var itemTitle = item['title'].toString().trim();
+
+          titles.forEach((element) {
+            if (itemTitle.contains(element)) {
+              bugsChart.add({
+                'title': element,
+                'rank': rankNo,
+                'type': 'day',
+              });
+            }
+          });
+          ++rankNo;
+        }
+      }
+    }
+
+    // 주간 차트
+
+    rankNo = 1;
+
+    if(await webScrapper.loadWebPage("/chart/track/week/total")) {
+      List<Map<String, dynamic>> items = webScrapper.getElement('tr"', ['']);
+
+      if(items.isNotEmpty) {
+        for (var item in items) {
+          var itemTitle = item['title'].toString().trim();
+
+          titles.forEach((element) {
+            if (itemTitle.contains(element)) {
+              bugsChart.add({
+                'title': element,
+                'rank': rankNo,
+                'type': 'week',
+              });
+            }
+          });
+          ++rankNo;
+        }
+      }
+    }
+  }
+
+  Future<void> getSpotifyChart({required List<String> titles}) async {
+    var webScrapper = WebScraper("https://spotifycharts.com");
+
+    int rankNo = 1;
+
+    // 일간 차트
+    if(await webScrapper.loadWebPage("/regional/kr/daily/latest")) {
+      List<Map<String, dynamic>> items = webScrapper.getElement('td.chart-table-track', ['strong']);
+
+      if(items.isNotEmpty) {
+        for (var item in items) {
+          var itemTitle = item['title'].toString().trim();
+
+          titles.forEach((element) {
+            if (itemTitle.contains(element)) {
+              spotifyChart.add({
+                'title': element,
+                'rank': rankNo,
+                'type': 'day',
+              });
+            }
+          });
+          ++rankNo;
+        }
+      }
+    }
+
+    // 주간 차트
+
+    rankNo = 1;
+
+    if(await webScrapper.loadWebPage("/regional/kr/weekly/latest")) {
+      List<Map<String, dynamic>> items = webScrapper.getElement('td.chart-table-track', ['strong']);
+
+      if(items.isNotEmpty) {
+        for (var item in items) {
+          var itemTitle = item['title'].toString().trim();
+
+          titles.forEach((element) {
+            if (itemTitle.contains(element)) {
+              spotifyChart.add({
+                'title': element,
+                'rank': rankNo,
+                'type': 'week',
+              });
+            }
+          });
+          ++rankNo;
+        }
+      }
     }
 
     _isModelReady = true;
