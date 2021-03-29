@@ -45,12 +45,7 @@ class HomePage extends GetWidget<AuthController> {
                   padding: const EdgeInsets.only(bottom: 50),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      buildImage(memberProfiles[0]),
-                      buildImage(memberProfiles[1]),
-                      buildImage(memberProfiles[2]),
-                      buildImage(memberProfiles[3]),
-                    ],
+                    children: memberProfiles.map((profile) => buildImage(profile)).toList(),
                   ),
                 )
               ],
