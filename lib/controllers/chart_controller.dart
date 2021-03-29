@@ -2,10 +2,6 @@ import 'package:get/get.dart';
 import 'package:web_scraper/web_scraper.dart';
 
 class ChartController extends GetxController {
-  // final String? query;
-  //
-  // ChartController(this.query);
-
   List<Map<String, dynamic>> melonChart = [];
   List<Map<String, dynamic>> spotifyChart = [];
   List<Map<String, dynamic>> bugsChart = [];
@@ -13,13 +9,13 @@ class ChartController extends GetxController {
   List<Map<String, dynamic>> vibeChart = [];
 
   bool _isModelReady = false;
+
   bool get isModelReady => _isModelReady;
 
   @override
   void onInit() {
-    getMelonChart(title: 'Rollin');
-    getMelonChart(title: '운전만해');
-    //getGenieChart(title: 'Memories');
+    getMelonChart(titles: ["Rollin'", '운전만해']);
+    getGenieChart(titles: ["Rollin'", '운전만해']);
     super.onInit();
   }
 
@@ -33,122 +29,152 @@ class ChartController extends GetxController {
     super.onClose();
   }
 
-  void getMelonChart({String? title}) async {
+  void getMelonChart({required List<String?> titles}) async {
     _isModelReady = false;
     update();
 
     var webScrapper = WebScraper('https://www.melon.com/');
     //일일 차트 크롤링
     //top 1~50 / 51~100 으로 나눠져있음
-    if(await webScrapper.loadWebPage('/chart/day/index.htm')) {
+    if (await webScrapper.loadWebPage('/chart/day/index.htm')) {
       List<Map<String, dynamic>> top50 = webScrapper.getElement('tr.lst50"', ['']);
       List<Map<String, dynamic>> top100 = webScrapper.getElement('tr.lst100"', ['']);
 
-      bool top50DayFound = false;
+      if (top50.isNotEmpty) {
+        int rankNo = 1;
+        for (var item in top50) {
+          var itemTitle = item['title'].toString().trim();
 
-      if(top50.isNotEmpty) {
-        int i = 1;
-        for(var item in top50) {
-          if(item['title'].toString().trim().contains(title!)) {
-            melonChart.add({
-              'title': title,
-              'rank' : i,
-              'type' : 'day',
-            });
-            top50DayFound = true;
-            break;
-          }
-          ++i;
+          titles.forEach((element) {
+            if (itemTitle.contains(element!)) {
+              melonChart.add({
+                'title': element,
+                'rank': rankNo,
+                'type': 'day',
+              });
+            }
+          });
+          ++rankNo;
         }
 
-        if(top50DayFound == false) {
-          i = 51;
-          for(var item in top100) {
-            if(item['title'].toString().trim().contains(title!)) {
-              melonChart.add({
-                'title': title,
-                'rank' : i,
-                'type' : 'day',
-              });
-              break;
-            }
-            ++i;
+        if (melonChart.length < titles.length) {
+          rankNo = 51;
+          for (var item in top100) {
+            var itemTitle = item['title'].toString().trim();
+
+            titles.forEach((element) {
+              if (itemTitle.contains(element!)) {
+                melonChart.add({
+                  'title': element,
+                  'rank': rankNo,
+                  'type': 'day',
+                });
+              }
+            });
+            ++rankNo;
           }
         }
       }
     }
 
     webScrapper = WebScraper('https://www.melon.com/');
-    if(await webScrapper.loadWebPage('/chart/week/index.htm')) {
-      List<Map<String, dynamic>> items = webScrapper.getElement('tr.lst50"', ['']);
+    if (await webScrapper.loadWebPage('/chart/week/index.htm')) {
+      List<Map<String, dynamic>> top50 = webScrapper.getElement('tr.lst50"', ['']);
+      List<Map<String, dynamic>> top100 = webScrapper.getElement('tr.lst100"', ['']);
 
-      bool isFound = false;
+      int rankNo = 1;
 
-      if(items.isNotEmpty) {
-        int i = 1;
-        for(var item in items) {
-          if(item['title'].toString().trim().contains(title!)) {
-            melonChart.add({
-              'title': title,
-              'rank' : i,
-              'type' : 'week',
-            });
-            isFound = true;
-            break;
-          }
-          ++i;
+      if (top50.isNotEmpty) {
+        for (var item in top50) {
+          var itemTitle = item['title'].toString().trim();
+
+          titles.forEach((element) {
+            if (itemTitle.contains(element!)) {
+              melonChart.add({
+                'title': element,
+                'rank': rankNo,
+                'type': 'week',
+              });
+            }
+          });
+          ++rankNo;
         }
 
-        if(!isFound){
-          int i = 51;
-          for(var item in items) {
-            if(item['title'].toString().trim().contains(title!)) {
+        for (var item in top100) {
+          var itemTitle = item['title'].toString().trim();
+
+          titles.forEach((element) {
+            if (itemTitle.contains(element!)) {
               melonChart.add({
-                'title': title,
-                'rank' : i,
-                'type' : 'week',
+                'title': element,
+                'rank': rankNo,
+                'type': 'week',
               });
-              isFound = true;
-              break;
             }
-            ++i;
-          }
+          });
+          ++rankNo;
         }
       }
     }
-
-    _isModelReady = true;
-    update();
   }
 
-  Future<void> getGenieChart({String? title, bool? last}) async {
+  Future<void> getGenieChart({required List<String?> titles}) async {
     var webScrapper = WebScraper('https://www.genie.co.kr');
 
-    bool pageIterator = true;
-    int page = 1;
+    int pageNo = 1;
+    int rankNo = 1;
 
-    int i = 1;
-    // 페이지가 나눠져있음 1~50/ 50~100 까지만 찾음
-    while(pageIterator) {
-      if(await webScrapper.loadWebPage('/chart/top200?ditc=D&rtm=N&pg=$page')) {
+    // 일간 차트
+    while (pageNo < 3) {
+      if (await webScrapper.loadWebPage('/chart/top200?ditc=D&rtm=N&pg=$pageNo')) {
         List<Map<String, dynamic>> items = webScrapper.getElement('tr.list"', ['']);
 
-        if(items.isNotEmpty) {
+        if (items.isNotEmpty) {
           for (var item in items) {
-            var _title = item['title'].toString().trim().contains("Rollin'");
-            if (_title) {
-              melonChart.add({
-                'title': title,
-                'rank': i,
-                'type': 'day',
-              });
-              pageIterator = true;
-              break;
-            }
-            ++i;
+            var itemTitle = item['title'].toString().trim();
+
+            titles.forEach((element) {
+              if (itemTitle.contains(element!)) {
+                genieChart.add({
+                  'title': element,
+                  'rank': rankNo,
+                  'type': 'day',
+                });
+              }
+            });
+            ++rankNo;
           }
         }
       }
+      ++pageNo;
+    }
+
+    // 주간 차트
+    pageNo = 1;
+    rankNo = 1;
+
+    while (pageNo < 3) {
+      if (await webScrapper.loadWebPage('/chart/top200?ditc=W&rtm=N&pg=$pageNo')) {
+        List<Map<String, dynamic>> items = webScrapper.getElement('tr.list"', ['']);
+
+        if (items.isNotEmpty) {
+          for (var item in items) {
+            var itemTitle = item['title'].toString().trim();
+
+            titles.forEach((element) {
+              if (itemTitle.contains(element!)) {
+                genieChart.add({
+                  'title': element,
+                  'rank': rankNo,
+                  'type': 'week',
+                });
+              }
+            });
+            ++rankNo;
+          }
+        }
+      }
+      ++pageNo;
     }
 
     _isModelReady = true;

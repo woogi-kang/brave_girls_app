@@ -61,10 +61,6 @@ class HomePage extends GetWidget<AuthController> {
     );
   }
 
-  _onSelected(String? item) {
-    Get.toNamed(Routes.chart);
-  }
-
   Widget buildImage(ProfileModel? memberProfile) {
     return GestureDetector(
       onTap: () {
