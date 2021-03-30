@@ -122,6 +122,6 @@ List<AlbumModel> albums = [
   AlbumModel(title: "Rollin'", artist: '브레이브걸스', albumCoverUrl: Assets.rollinAlbumCover, createdDate: '2017.03.07', reviewScore: 4.7),
   AlbumModel(title: 'We Ride', artist: '브레이브걸스', albumCoverUrl: Assets.werideAlbumCover2, createdDate: '2020.08.14', reviewScore: 4.8),
   AlbumModel(title: 'HIGH HEELS', artist: '브레이브걸스', albumCoverUrl: Assets.highHeelsAlbumCover, createdDate: '2016.06.27', reviewScore: 4.2),
-  AlbumModel(title: 'The Difference', artist: '브레이브걸스', albumCoverUrl: Assets.byunhaeteoAlbumCover, createdDate: '2011.04.08', reviewScore: 4.1),
+  AlbumModel(title: 'The Difference', artist: '브레이브걸스', albumCoverUrl: Assets.theDifferenceAlbumCover, createdDate: '2011.04.08', reviewScore: 4.1),
   AlbumModel(title: '변했어', artist: '브레이브걸스', albumCoverUrl: Assets.byunhaeteoAlbumCover, createdDate: '2016.02.016', reviewScore: 4.1),
 ];

@@ -16,14 +16,14 @@ class AlbumsPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 10),
           child: Column(
-            children: albums.map((e) => buildAlbums(e)).toList(),
+            children: albums.map((album) => buildAlbums(album: album)).toList(),
           ),
         ),
       ),
     );
   }
 
-  Widget buildAlbums(AlbumModel? album) {
+  Widget buildAlbums({required AlbumModel album}) {
     return Container(
       margin: EdgeInsets.fromLTRB(16, 5, 16, 0),
       child: Column(
@@ -60,7 +60,7 @@ class AlbumsPage extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: Icon(Icons.arrow_forward_ios),
-                    color: Colors.black,
+                    color: AppColors.darkSlateBlue,
                     onPressed: () {
                     },
                   )

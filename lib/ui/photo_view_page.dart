@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:brave_girls/constants/colors.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:dio/dio.dart';
 import 'package:fimber/fimber.dart';
@@ -36,7 +37,7 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
     currentIndex = index;
   }
 
-  void _requestPermission() async {
+  Future<void> _requestPermission() async {
     Map<Permission, PermissionStatus> statuses = await [
       Permission.storage,
     ].request();
@@ -55,26 +56,10 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
 
     Fimber.d('$result');
 
-    if(result['isSuccess'] == true) {
-      Fluttertoast.showToast(
-          msg: " 다운로드 완료 ",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.grey,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
+    if (result['isSuccess'] == true) {
+      Fluttertoast.showToast(msg: " 다운로드 완료 ", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 1, backgroundColor: Colors.grey, textColor: Colors.white, fontSize: 16.0);
     } else {
-      Fluttertoast.showToast(
-          msg: " 다운로드 실패 ",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
+      Fluttertoast.showToast(msg: " 다운로드 실패 ", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 1, backgroundColor: Colors.red, textColor: Colors.white, fontSize: 16.0);
     }
   }
 
@@ -86,6 +71,7 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
+          padding: const EdgeInsets.only(left: 16),
           onPressed: () {
             Get.back();
           },
@@ -94,25 +80,53 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
             color: Colors.white,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.download_rounded),
-            color: Colors.white,
-            onPressed: () async {
-              _requestPermission();
-              _getImageAndDownload();
-            },
-          )
-        ],
       ),
       body: Center(
-        child: PhotoViewGallery.builder(
-          scrollPhysics: const BouncingScrollPhysics(),
-          itemCount: widget.imageUrls!.length,
-          pageController: _pageController,
-          scrollDirection: Axis.horizontal,
-          builder: _buildItem,
-          onPageChanged: onPageChanged,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            PhotoViewGallery.builder(
+              scrollPhysics: const BouncingScrollPhysics(),
+              itemCount: widget.imageUrls!.length,
+              pageController: _pageController,
+              scrollDirection: Axis.horizontal,
+              builder: _buildItem,
+              onPageChanged: onPageChanged,
+            ),
+            SafeArea(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  InkWell(
+                    onTap: () async {
+                      await _requestPermission();
+                      _getImageAndDownload();
+                    },
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            color: AppColors.slateBlue,
+                            child: Center(
+                              child: Text(
+                                "다운로드",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontFamily: 'NotoSansKR Regular',
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
