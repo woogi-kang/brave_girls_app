@@ -98,6 +98,8 @@ class HomePage extends GetWidget<AuthController> {
           Get.toNamed(Routes.chart);
         } else if (value == "앨범 정보") {
           Get.toNamed(Routes.album_detail);
+        } else if (value == "스케줄") {
+          Get.toNamed(Routes.calendar);
         }
       },
       onCanceled: () {

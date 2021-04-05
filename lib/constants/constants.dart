@@ -116,6 +116,7 @@ List<ProfileModel> memberProfiles = [
 List<String> menus = [
   '음원 순위',
   '앨범 정보',
+  '스케줄'
 ];
 
 List<AlbumModel> albums = [
