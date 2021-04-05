@@ -2,6 +2,13 @@
 
 A new Flutter application.
 
+Todo:
+
+1. 갤러리, 유튜브 페이징
+2. 스케줄러
+3. 푸시 서버
+4. 디자인 적용
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
