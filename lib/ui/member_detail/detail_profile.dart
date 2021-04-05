@@ -191,6 +191,9 @@ class DetailProfile extends StatelessWidget {
             height: 25,
             child: InkWell(
               onTap: () async {
+                if(link.instagram!.isEmpty) {
+                  return;
+                }
                 var url = link.instagram;
                 await launch(url!);
               },
@@ -208,6 +211,9 @@ class DetailProfile extends StatelessWidget {
             height: 25,
             child: InkWell(
               onTap: () async {
+                if(link.youtube!.isEmpty) {
+                  return;
+                }
                 var url = link.youtube;
                 await launch(url!);
               },
@@ -225,6 +231,9 @@ class DetailProfile extends StatelessWidget {
             height: 25,
             child: InkWell(
               onTap: () async {
+                if(link.tiktok!.isEmpty) {
+                  return;
+                }
                 var url = link.tiktok;
                 await launch(url!);
               },
@@ -242,6 +251,9 @@ class DetailProfile extends StatelessWidget {
             height: 25,
             child: InkWell(
               onTap: () async {
+                if(link.twitter!.isEmpty) {
+                  return;
+                }
                 var url = link.twitter;
                 await launch(url!);
               },

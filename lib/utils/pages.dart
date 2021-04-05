@@ -1,4 +1,5 @@
 import 'package:brave_girls/ui/albums/albums_page.dart';
+import 'package:brave_girls/ui/calendar/calendar.dart';
 import 'package:brave_girls/ui/charts/chart_ranking_page.dart';
 import 'package:brave_girls/ui/home_page.dart';
 import 'package:brave_girls/ui/member_detail/member_detail.dart';
@@ -45,6 +46,10 @@ abstract class AppPages {
     GetPage(
       name: Routes.album_detail,
       page: () => AlbumsPage(),
+    ),
+    GetPage(
+      name: Routes.calendar,
+      page: () => CalendarPage(),
     ),
   ];
 }
