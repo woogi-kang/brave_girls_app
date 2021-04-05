@@ -34,7 +34,7 @@ class AlbumsPage extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Image.asset(
-                    album!.albumCoverUrl!,
+                    album.albumCoverUrl!,
                     height: 100,
                     fit: BoxFit.cover,
                   ),
