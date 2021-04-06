@@ -1,5 +1,6 @@
 import 'package:brave_girls/controllers/bindings/authBinding.dart';
 import 'package:brave_girls/ui/splash_page.dart';
+import 'package:brave_girls/utils/fimber_helper.dart';
 import 'package:brave_girls/utils/pages.dart';
 import 'package:fimber/fimber.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,7 +10,10 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Fimber.plantTree(DebugTree());
+
+  var defaultFormat = AssertFormattedTree();
+
+  Fimber.plantTree(defaultFormat);
   await Firebase.initializeApp();
 
   runApp(
