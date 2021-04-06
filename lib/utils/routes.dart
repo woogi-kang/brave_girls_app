@@ -6,4 +6,5 @@ abstract class Routes {
   static const photo_view = '/photo_view';
   static const chart = '/chart';
   static const album_detail = '/album_detail';
+  static const calendar = '/calendar';
 }
