@@ -7,4 +7,5 @@ abstract class Routes {
   static const chart = '/chart';
   static const album_detail = '/album_detail';
   static const calendar = '/calendar';
+  static const youtube_play_page = '/youtube_play_page';
 }

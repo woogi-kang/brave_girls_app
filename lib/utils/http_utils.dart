@@ -10,6 +10,8 @@ class HttpUtil {
 
     var uri = Uri.https(url!, unEncodedPath!, params);
 
+    Fimber.d('Request url: ${uri.toString()}');
+
     try {
       final response = await http.get(
         uri,
@@ -22,9 +24,9 @@ class HttpUtil {
         responseData = utf8.decode(response.bodyBytes);
       }
     } on TimeoutException catch (e) {
-      print('TimeoutException: ${e.toString()}');
+      Fimber.e('TimeoutException: ${e.toString()}');
     } on Exception catch (e) {
-      print('Exception: ${e.toString()}');
+      Fimber.e('Exception: ${e.toString()}');
     }
 
     return responseData;

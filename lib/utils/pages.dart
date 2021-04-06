@@ -3,6 +3,7 @@ import 'package:brave_girls/ui/calendar/calendar.dart';
 import 'package:brave_girls/ui/charts/chart_ranking_page.dart';
 import 'package:brave_girls/ui/home_page.dart';
 import 'package:brave_girls/ui/member_detail/member_detail.dart';
+import 'package:brave_girls/ui/member_detail/youtube_play_page.dart';
 import 'package:brave_girls/ui/photo_view_page.dart';
 import 'package:brave_girls/ui/splash_page.dart';
 import 'package:brave_girls/utils/root.dart';
@@ -50,6 +51,11 @@ abstract class AppPages {
     GetPage(
       name: Routes.calendar,
       page: () => CalendarPage(),
+    ),
+    GetPage(
+      name: Routes.youtube_play_page,
+      settings: Get.arguments,
+      page: () => YoutubePlayPage(videoId: Get.arguments['videoId']),
     ),
   ];
 }
