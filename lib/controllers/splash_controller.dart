@@ -27,8 +27,7 @@ class SplashController extends GetxController {
     // var settings = {
     //   OSiOSSettings.autoPrompt: false,
     //   OSiOSSettings.promptBeforeOpeningPushUrl: true
-    // };
-
+    // };   //
     // OneSignal.shared.setNotificationReceivedHandler((OSNotification notification) {
     //   this.setState(() {
     //     _debugLabelString =
