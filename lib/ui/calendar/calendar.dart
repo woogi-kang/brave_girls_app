@@ -143,10 +143,10 @@ class _CalendarPageState extends State<CalendarPage> {
 //       ),
 // =======
 
-    // return WebView(
-    //   initialUrl: "https://gall.dcinside.com/mgallery/board/lists?id=bravegirls0409&exception_mode=recommend",
-    //   javascriptMode: JavascriptMode.unrestricted,
-    // );
+    return WebView(
+      initialUrl: "https://gall.dcinside.com/mgallery/board/lists?id=bravegirls0409&exception_mode=recommend",
+      javascriptMode: JavascriptMode.unrestricted,
+    );
     // return CellCalendar(
     //   cellCalendarPageController: cellCalendarPageController,
     //   events: _sampleEvents,
