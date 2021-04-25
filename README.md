@@ -4,7 +4,7 @@ A new Flutter application.
 
 Todo:
 
-1. 갤러리, 유튜브 페이징( next page 라는거로)
+1. 갤러리 적용
 2. 스케줄러
 3. 푸시 서버
 4. 디자인 적용
