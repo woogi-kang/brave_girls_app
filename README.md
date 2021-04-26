@@ -7,10 +7,11 @@ Todo:
 1. 갤러리 적용
 2. 스케줄러
 3. 음원 순위 크롤링 부분
-4. 푸시 서버 (Onesignal)
-5. 코드매직 (CI/CD)
-6. 디자인 적용
-7. 서버 연동 -> DB 추가 (mongoDB)
+4. 공식 팬카페 스케줄 크롤링 
+5. 푸시 서버 (Onesignal)
+6. 코드매직 (CI/CD)
+7. 디자인 적용
+8. 서버 연동 -> DB 추가 (mongoDB)
 
 ## Getting Started
 
