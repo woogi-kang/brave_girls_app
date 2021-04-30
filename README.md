@@ -13,6 +13,9 @@ Todo:
 7. 디자인 적용
 8. 서버 연동 -> DB 추가 (mongoDB)
 
+새로운 솔류션 사옹하기로 
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
