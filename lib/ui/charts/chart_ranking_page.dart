@@ -1,11 +1,15 @@
 import 'package:brave_girls/constants/colors.dart';
 import 'package:brave_girls/controllers/chart_controller.dart';
+import 'package:brave_girls/utils/supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChartRankingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final SupaBaseController supaController = Get.find();
+    supaController.getMusicChartTable();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("음원 순위"),

@@ -32,8 +32,9 @@ dependencies:
   dartx: ^0.7.1
   cell_calendar: ^0.5.0+1
   youtube_player_flutter: ^8.0.0
+  supabase: ^0.0.1-dev.16
 
-#  onesignal_flutter: ^3.0.0-beta1
+  #  onesignal_flutter: ^3.0.0-beta1
 #  onesignal_flutter: ^3.0.0-beta1
   webview_flutter: ^2.0.4
 

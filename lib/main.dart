@@ -1,4 +1,4 @@
-import 'package:brave_girls/controllers/bindings/authBinding.dart';
+import 'package:brave_girls/controllers/bindings/initialBinding.dart';
 import 'package:brave_girls/ui/splash_page.dart';
 import 'package:brave_girls/utils/fimber_helper.dart';
 import 'package:brave_girls/utils/pages.dart';
@@ -32,7 +32,7 @@ class BraveGirlsApp extends StatelessWidget {
       defaultTransition: Transition.fade,
       initialRoute: '/splash',
       getPages: AppPages.pages,
-      initialBinding: AuthBinding(),
+      initialBinding: InitialBinding(),
       home: SplashPage(),
       theme: ThemeData(
         fontFamily: 'NotoSansKR Regular'
