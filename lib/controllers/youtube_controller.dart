@@ -79,14 +79,14 @@ class YoutubeController extends GetxController {
 
     String unencodedPath = '/youtube/v3/search';
 
-    var params = {'maxResults': '$maxResults', 'q': query, 'key': Keys.YOUTUBE_API, 'pageToken': youtubeModel.value!.nextPageToken, 'part': 'snippet', 'type': 'video', 'order': 'viewCount'};
+    var params = {'maxResults': '$maxResults', 'q': query, 'key': Keys.YOUTUBE_API, 'pageToken': youtubeModel.value.nextPageToken, 'part': 'snippet', 'type': 'video', 'order': 'viewCount'};
 
     var result = await HttpUtil().get(url: url, unEncodedPath: unencodedPath, params: params);
     var model = YoutubeListModel.fromJson(jsonDecode(result));
 
     //다음페이지 토큰 갱신
-    youtubeModel.value!.nextPageToken = model.nextPageToken;
-    youtubeModel.value!.items!.addAll(model.items!);
+    youtubeModel.value.nextPageToken = model.nextPageToken;
+    youtubeModel.value.items!.addAll(model.items!);
 
     isLoading = true.obs;
     update();

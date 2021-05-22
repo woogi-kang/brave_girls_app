@@ -1,12 +1,11 @@
 import 'package:brave_girls/ui/albums/albums_page.dart';
-import 'package:brave_girls/ui/calendar/calendar.dart';
 import 'package:brave_girls/ui/charts/chart_ranking_page.dart';
 import 'package:brave_girls/ui/home_page.dart';
 import 'package:brave_girls/ui/member_detail/member_detail.dart';
 import 'package:brave_girls/ui/member_detail/youtube_play_page.dart';
 import 'package:brave_girls/ui/photo_view_page.dart';
+import 'package:brave_girls/ui/schedule/calendar.dart';
 import 'package:brave_girls/ui/splash_page.dart';
-import 'package:brave_girls/utils/root.dart';
 import 'package:brave_girls/utils/routes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -16,10 +15,6 @@ abstract class AppPages {
     GetPage(
       name: Routes.splash,
       page: () => SplashPage(),
-    ),
-    GetPage(
-      name: Routes.initial,
-      page: () => Root(),
     ),
     GetPage(
       name: Routes.home_page,

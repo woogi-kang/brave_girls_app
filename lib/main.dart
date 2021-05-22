@@ -33,6 +33,7 @@ class BraveGirlsApp extends StatelessWidget {
       initialRoute: '/splash',
       getPages: AppPages.pages,
       initialBinding: InitialBinding(),
+      smartManagement: SmartManagement.keepFactory,
       home: SplashPage(),
       theme: ThemeData(
         fontFamily: 'NotoSansKR Regular'

@@ -4,10 +4,13 @@ import 'package:brave_girls/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SplashPage extends GetWidget {
-  SplashController? controller = Get.put(SplashController());
+class SplashPage extends StatelessWidget {
+  late SplashController controller;
 
   Widget build(BuildContext context) {
+    Get.lazyPut(() => SplashController());
+    controller = Get.find();
+
     return GetBuilder<SplashController>(
       builder: (_) =>
           Scaffold(

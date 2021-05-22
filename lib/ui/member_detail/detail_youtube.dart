@@ -3,7 +3,6 @@ import 'package:brave_girls/utils/routes.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class DetailYoutube extends StatelessWidget {
   final String? query;
@@ -15,7 +14,7 @@ class DetailYoutube extends StatelessWidget {
     return GetBuilder<YoutubeController>(
       init: YoutubeController(query: query),
       builder: (controller) => Obx(
-        () => !controller.isModelReady.value!
+        () => !controller.isModelReady.value
             ? Center(
                 child: CircularProgressIndicator(),
               )
@@ -28,9 +27,9 @@ class DetailYoutube extends StatelessWidget {
                 },
                 child: ListView.builder(
                   controller: controller.scrollController,
-                  itemCount: controller.youtubeModel.value!.items!.length + 1,
+                  itemCount: controller.youtubeModel.value.items!.length + 1,
                   itemBuilder: (_, index) {
-                    if(index == controller.youtubeModel.value!.items!.length) {
+                    if(index == controller.youtubeModel.value.items!.length) {
                       return Center(child: CircularProgressIndicator());
                     }
 
@@ -43,7 +42,7 @@ class DetailYoutube extends StatelessWidget {
   }
 
   Widget buildYoutubeItem(YoutubeController controller, int index) {
-    var item = controller.youtubeModel.value!.items![index];
+    var item = controller.youtubeModel.value.items![index];
     var id = item.id;
     var thumbnail = item.snippet!.thumbnails;
     var title = item.snippet!.title!;

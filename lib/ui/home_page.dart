@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:brave_girls/constants/colors.dart';
 import 'package:brave_girls/constants/constants.dart';
-import 'package:brave_girls/controllers/auth_controller.dart';
 import 'package:brave_girls/models/profile_model.dart';
 import 'package:brave_girls/resources/resources.dart';
 import 'package:brave_girls/utils/routes.dart';
@@ -11,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
-class HomePage extends GetWidget<AuthController> {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UISizeConfig.init(context);
