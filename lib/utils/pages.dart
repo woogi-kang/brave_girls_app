@@ -22,14 +22,12 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.member_detail,
-      settings: Get.arguments,
       page: () => MemberDetail(
         memberProfile: Get.arguments['memberProfile'],
       ),
     ),
     GetPage(
       name: Routes.photo_view,
-      settings: Get.arguments,
       page: () => PhotoViewPage(
         imageUrls: Get.arguments['imageUrls'],
         index: Get.arguments['index'],
@@ -49,7 +47,6 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.youtube_play_page,
-      settings: Get.arguments,
       page: () => YoutubePlayPage(videoId: Get.arguments['videoId']),
     ),
   ];

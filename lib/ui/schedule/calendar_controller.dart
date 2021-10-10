@@ -99,6 +99,8 @@ class CalendarController extends GetxController {
       }
       events.refresh();
     }
+
+    update();
   }
 
   int getHashCode(DateTime key) {

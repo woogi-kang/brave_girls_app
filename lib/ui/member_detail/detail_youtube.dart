@@ -20,7 +20,7 @@ class DetailYoutube extends StatelessWidget {
               )
             : NotificationListener<ScrollNotification>(
                 onNotification: (ScrollNotification scrollInfo) {
-                  if(scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
+                  if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
                     controller.addYoutubeLists(query: query);
                   }
                   return true;
@@ -28,8 +28,9 @@ class DetailYoutube extends StatelessWidget {
                 child: ListView.builder(
                   controller: controller.scrollController,
                   itemCount: controller.youtubeModel.value.items!.length + 1,
+                  shrinkWrap: true,
                   itemBuilder: (_, index) {
-                    if(index == controller.youtubeModel.value.items!.length) {
+                    if (index == controller.youtubeModel.value.items!.length) {
                       return Center(child: CircularProgressIndicator());
                     }
 
@@ -48,49 +49,65 @@ class DetailYoutube extends StatelessWidget {
     var title = item.snippet!.title!;
     title = title.replaceAll('&#39;', '');
 
-    return InkWell(
+    return GestureDetector(
       onTap: () async {
         Get.toNamed(Routes.youtube_play_page, arguments: {'videoId': id!.videoId});
       },
-      child: Container(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Column(
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: CachedNetworkImage(
-                      height: thumbnail!.medium!.height!.toDouble(),
-                      imageUrl: (thumbnail.high!.url!),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.fromLTRB(16, 5, 16, 0),
-                    child: Text(
-                      title,
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontFamily: 'NotoSansKR Regular',
-                        fontSize: 15,
-                        letterSpacing: 0.5,
+            Container(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                      child: CachedNetworkImage(
+                        height: thumbnail!.medium!.height!.toDouble(),
+                        imageUrl: (thumbnail.high!.url!),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-            const SizedBox(height: 20),
-            Divider(),
+            Container(
+              height: 80,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                  border: Border.all(color: const Color(0xffffffff), width: 1),
+                  boxShadow: [BoxShadow(color: const Color(0x29000000), offset: Offset(0, 3), blurRadius: 6, spreadRadius: 0)],
+                  color: const Color(0xffffffff)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.left,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: const Color(0xff000000),
+                        fontWeight: FontWeight.w700,
+                        fontFamily: "Montserrat",
+                        fontStyle: FontStyle.normal,
+                        fontSize: 19.0,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

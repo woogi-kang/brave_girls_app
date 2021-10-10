@@ -1,4 +1,3 @@
-import 'package:brave_girls/models/todo_model.dart';
 import 'package:brave_girls/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -36,25 +35,6 @@ class Database {
         'content': content,
         'done': false,
       });
-    } catch (e) {
-      print(e);
-      rethrow;
-    }
-  }
-
-  Stream<List<TodoModel>> todoStream(String uid) {
-    return _firestore.collection("users").doc(uid).collection("todos").orderBy("dateCreated", descending: true).snapshots().map((QuerySnapshot query) {
-      List<TodoModel> retVal = [];
-      query.docs.forEach((element) {
-        retVal.add(TodoModel.fromDocumentSnapshot(element));
-      });
-      return retVal;
-    });
-  }
-
-  Future<void> updateTodo(bool newValue, String uid, String todoId) async {
-    try {
-      _firestore.collection("users").doc(uid).collection("todos").doc(todoId).update({"done": newValue});
     } catch (e) {
       print(e);
       rethrow;
